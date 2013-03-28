@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'UnitTestingClassVariable' target in the 'UnitTestingClassVariable' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
