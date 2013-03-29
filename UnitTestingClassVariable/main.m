@@ -1,22 +1,23 @@
-//
-//  main.m
-//  UnitTestingClassVariable
-//
-//  Created by Joshua Caswell on 3/28/13.
-//  Copyright (c) 2013 Joshua Caswell. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
+#import "Milliner.h"
+#import "ClassVariablesExposer.h"
+
+#define BOOLToNSString(b) (b) ? @"YES" : @"NO"
 
 int main(int argc, const char * argv[])
 {
-
+    
     @autoreleasepool {
         
-        // insert code here...
-        NSLog(@"Hello, World!");
+        [Milliner associateClassVariablesByName];
+        NSString * actualFeatherType = [Milliner classValueForName:"featherType"];
+        NSLog(@"Assert [[Milliner featherType] isEqualToString:@\"chicken hawk\"]: %@", BOOLToNSString([actualFeatherType isEqualToString:@"chicken hawk"]));
+        
+        // Since we got a pointer to the BOOL, this does track its value.
+        NSLog(@"%@", BOOLToNSString([Milliner classBOOLForName:"waterproof"]));
+        [Milliner flipWaterproof];
+        NSLog(@"%@", BOOLToNSString([Milliner classBOOLForName:"waterproof"]));
         
     }
     return 0;
 }
-
