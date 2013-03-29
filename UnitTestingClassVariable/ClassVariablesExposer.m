@@ -7,7 +7,7 @@
 
 + (void)associateClassVariablesByName
 {
-    // Stub to prevent warning about incomplete implementation.
+    // Nothing to do in base class; must be overridden.
 }
 
 + (id)classValueForName:(char *)name

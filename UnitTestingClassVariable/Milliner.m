@@ -2,6 +2,10 @@
 
 #import "Milliner.h"
 
+#if UNIT_TESTING
+#import "ClassVariablesExposer.h"
+#endif /* UNIT_TESTING */
+
 @implementation Milliner
 static NSString * featherType;
 static BOOL waterproof;
@@ -18,20 +22,12 @@ static BOOL waterproof;
     waterproof = !waterproof;
 }
 
-@end
-
 #if UNIT_TESTING
-#import "ClassVariablesExposer.h"
-@interface Milliner (ExposeClassVariables)
-@end
-
-@implementation Milliner (ExposeClassVariables)
-
 + (void)associateClassVariablesByName
 {
     ASSOC_OBJ_BY_NAME(featherType);
     ASSOC_BOOL_BY_NAME(waterproof);
 }
+#endif /* UNIT_TESTING */
 
 @end
-#endif /* UNIT_TESTING */
